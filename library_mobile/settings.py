@@ -28,9 +28,9 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', 'library-mobile-server.herokuapp.com']
 ALLOWED_PORTS = []
-CORS_ORIGIN_WHITELIST = []
+CORS_ORIGIN_WHITELIST = ['http://localhost:8000', 'https://' + 'library-mobile-server.herokuapp.com']
 
 
 # Application definition

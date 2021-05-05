@@ -20,9 +20,12 @@ from django.conf.urls.static import static
 from rest_framework import routers
 
 from book.views import BookViewSet
+from customer.views import CustomerViewSet
 
 router = routers.DefaultRouter()
-router.register( r'book' , BookViewSet , basename='Book' )
+router.register( r'book'     , BookViewSet     , basename='Book'     )
+router.register( r'customer' , CustomerViewSet , basename='Customer' )
+
 
 urlpatterns = [
     path('', include(router.urls)),

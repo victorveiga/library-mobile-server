@@ -14,4 +14,4 @@ class MovementSerializer(ModelSerializer):
         return get_closed_movement(instance)
 
     def get_customer_name(self, instance):
-        return instance.customer.name
+        return instance.customer.firstname

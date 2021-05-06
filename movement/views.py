@@ -15,7 +15,14 @@ class MovementViewSet(ModelViewSet):
     serializer_class = MovementSerializer
 
     def get_queryset(self):
-        return Movement.objects.all() 
+        status = self.request.query_params.get('status', None)
+
+        queryset = Movement.objects.all() 
+
+        if status:
+            queryset = queryset.filter(status=status)
+
+        return queryset
     
     def destroy(self, request, *args, **kwargs):
         return Response(data={'message': 'Request not allowed'}, status=status.HTTP_400_BAD_REQUEST)

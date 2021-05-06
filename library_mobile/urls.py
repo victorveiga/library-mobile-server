@@ -21,10 +21,12 @@ from rest_framework import routers
 
 from book.views import BookViewSet
 from customer.views import CustomerViewSet
+from movement.views import MovementViewSet
 
 router = routers.DefaultRouter()
 router.register( r'book'     , BookViewSet     , basename='Book'     )
 router.register( r'customer' , CustomerViewSet , basename='Customer' )
+router.register( r'movement' , MovementViewSet , basename='Movement' )
 
 
 urlpatterns = [

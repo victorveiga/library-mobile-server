@@ -1,4 +1,6 @@
 from rest_framework.viewsets import ModelViewSet
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication, TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from .models import Movement
 from .serializers import MovementSerializer
@@ -12,7 +14,9 @@ import datetime
 
 # Create your views here.
 class MovementViewSet(ModelViewSet):
-    serializer_class = MovementSerializer
+    serializer_class       = MovementSerializer
+    authentication_classes = [SessionAuthentication, BasicAuthentication, TokenAuthentication]
+    permission_classes     = [IsAuthenticated]
 
     def get_queryset(self):
         status = self.request.query_params.get('status', None)

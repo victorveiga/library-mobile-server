@@ -83,7 +83,29 @@ WSGI_APPLICATION = 'library_mobile.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 default_dburl = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
-DATABASES = { 'default': config('DATABASE_URL', default=default_dburl, cast=dburl), }
+#DATABASES = { 'default': config('DATABASE_URL', default=default_dburl, cast=dburl), }
+DATABASES = {
+    'default': {
+        'ENGINE': 'djongo',
+        'NAME': 'library',
+        'CLIENT': {
+            'host': 'mongodb+srv://library:%23Library123@cluster0.i8pkl.mongodb.net/?retryWrites=true&w=majority',
+            'username': 'library',
+            'password': '#Library123',
+            'authSource': 'db-name',
+            'authMechanism': 'SCRAM-SHA-1'
+        },
+        'LOGGING': {
+            'version': 1,
+            'loggers': {
+                'djongo': {
+                    'level': 'DEBUG',
+                    'propagate': False,                        
+                }
+            },
+        },
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators

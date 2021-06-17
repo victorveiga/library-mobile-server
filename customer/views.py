@@ -11,4 +11,6 @@ class CustomerViewSet(ModelViewSet):
     permission_classes     = [IsAuthenticated]
 
     def get_queryset(self):
-        return Customer.objects.all()
+        queryset = Customer.objects.all()
+        queryset = queryset.order_by('-id')
+        return queryset

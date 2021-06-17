@@ -26,6 +26,8 @@ class MovementViewSet(ModelViewSet):
         if status:
             queryset = queryset.filter(status=status)
 
+        queryset = queryset.order_by('-id')
+
         return queryset
     
     def destroy(self, request, *args, **kwargs):

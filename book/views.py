@@ -11,4 +11,6 @@ class BookViewSet(ModelViewSet):
     permission_classes     = [IsAuthenticated]
 
     def get_queryset(self):
-        return Book.objects.all()
+        queryset = Book.objects.all()
+        queryset = queryset.order_by('-id')
+        return queryset
